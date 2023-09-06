@@ -1,0 +1,7 @@
+[package]
+name = "snakes-and-ladders"
+version = "0.1.0"
+authors = ["Lauri Virtanen <lauri.virtanen@iki.fi>"]
+edition = "2021"
+
+[dependencies]
