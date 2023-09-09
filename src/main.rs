@@ -163,18 +163,20 @@ fn main() {
 
             if board[player.position as usize].name.is_some() {
                 println!(
-                    "Landed on {}",
+                    "Landed on {}!",
                     board[player.position as usize].name.as_ref().unwrap()
                 );
             }
 
             if board[player.position as usize].jump.is_some() {
                 println!(
-                    "Jumping to {}",
+                    "Jumping to {}.",
                     board[player.position as usize].jump.unwrap()
                 );
                 player.position = board[player.position as usize].jump.unwrap();
             }
+
+            println!("Position is now {}.", player.position);
         }
     }
 }
