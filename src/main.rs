@@ -132,7 +132,7 @@ fn main() {
     board.push(Tile::new(None, None));
     board.push(Tile::new(None, None));
     board.push(Tile::new(None, None));
-    board.push(Tile::new(Some("Fox".to_string()), Some(73)));
+    board.push(Tile::new(Some("Jackal".to_string()), Some(73)));
     board.push(Tile::new(None, None));
     board.push(Tile::new(Some("Gorilla".to_string()), Some(75)));
     board.push(Tile::new(None, None));
