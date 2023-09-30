@@ -5,4 +5,5 @@ authors = ["Lauri Virtanen <lauri.virtanen@iki.fi>"]
 edition = "2021"
 
 [dependencies]
+clap = { version = "4.4.2", features = ["derive"] }
 rand = "0.8.5"

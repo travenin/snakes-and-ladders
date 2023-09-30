@@ -1,3 +1,5 @@
+use clap::Parser;
+
 use rand::Rng;
 
 struct Tile {
@@ -37,7 +39,20 @@ impl Die {
     }
 }
 
+#[derive(Parser)]
+struct Args {
+    /// Name of the player. Use multiple times for multiple players.
+    #[arg(long = "player", short = 'p', default_values_t = vec!["Player".to_string()])]
+    players: Vec<String>,
+
+    /// Number of sides on the die.
+    #[arg(long = "die", short = 'd', default_value_t = 6)]
+    die: u32,
+}
+
 fn main() {
+    let args = Args::parse();
+
     let mut board = Vec::new();
     board.push(Tile::new(Some("Start".to_string()), None));
     board.push(Tile::new(Some("Zebra".to_string()), Some(38)));
@@ -141,18 +156,19 @@ fn main() {
     board.push(Tile::new(None, None));
     board.push(Tile::new(None, None));
 
-    let dice = Die::new(6);
-    let mut players = vec![
-        Player::new("One".to_string()),
-        Player::new("Two".to_string()),
-    ];
+    let die = Die::new(args.die);
+
+    let mut players = Vec::new();
+    for name in args.players {
+        players.push(Player::new(name));
+    }
 
     loop {
         for player in &mut players {
             println!("\n{}'s turn at {}.", player.name, player.position);
 
-            let roll = dice.roll();
-            println!("Rolled a {}", roll);
+            let roll = die.roll();
+            println!("Rolled a {}.", roll);
 
             player.position += roll;
 
