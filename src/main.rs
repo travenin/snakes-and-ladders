@@ -48,6 +48,10 @@ struct Args {
     /// Number of sides on the die.
     #[arg(long = "die", short = 'd', default_value_t = 6)]
     die: u32,
+
+    /// Number of seconds to pause between turns.
+    #[arg(long = "pause", short = 'w', default_value_t = 0)]
+    pause_seconds: u64,
 }
 
 fn main() {
@@ -193,6 +197,8 @@ fn main() {
             }
 
             println!("Position is now {}.", player.position);
+
+            std::thread::sleep(std::time::Duration::from_secs(args.pause_seconds));
         }
     }
 }
